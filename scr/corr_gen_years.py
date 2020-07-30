@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import seaborn as sns
 import awesome_streamlit as ast
 
 def write():
@@ -80,6 +80,10 @@ def write():
                     pe_str = str(pearson_coef)
                     my_str = "This is a Strong Positive correlation: {}".format(pe_str)
                     st.write(my_str)
+                    
+            plot = sns.regplot(X,Y)
+            plot.set(xlabel=opt_2, ylabel=opt, title='Plot')
+            st.pyplot()
 
         if st.button('Submit:'):
             my_func()
