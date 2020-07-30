@@ -6,7 +6,7 @@ import awesome_streamlit as ast
 
 def write():
     """Used to write the page in the app.py file"""
-    with st.spinner("Loading About ..."):
+    with st.spinner("Loading Page ..."):
 
 
         df_1 = pd.read_csv("life-expectancy.csv")
