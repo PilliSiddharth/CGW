@@ -1,4 +1,4 @@
 pandas==1.1.0
 streamlit==0.49.0
 numpy==1.17.3
-awesome-streamlit==20191014.2
+awesome-streamlit==20200728.1
