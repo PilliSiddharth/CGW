@@ -7,7 +7,7 @@ import awesome_streamlit as ast
 
 def write():
     """Used to write the page in the app.py file"""
-    with st.spinner("Loading About ..."):
+    with st.spinner("Loading Page ..."):
         # ast.shared.components.title_awesome(" - About")
         # st.markdown(
         #     """## Contributions""")
