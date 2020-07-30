@@ -32,7 +32,7 @@ def write():
         opt_3 = st.selectbox("Select Countries:", options=YEAR)
 
         dataset_1 = CHOICE[opt]
-        dataset_2 = CHOICE_2[opt]
+        dataset_2 = CHOICE_2[opt_2]
         year = opt_3
 
         dataset_1 = dataset_1.loc[(dataset_1["Year"] == year)]
