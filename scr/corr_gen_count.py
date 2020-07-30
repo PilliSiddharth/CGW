@@ -89,7 +89,7 @@ def write():
                  st.write(my_str)
         
          plot = sns.regplot(X,Y)
-         plot.set(xlabel=opt_2, ylabel=opt, title='Plot')
+         plot.set(xlabel=option_2, ylabel=option, title='Plot')
          st.pyplot()
         
         if st.button('Submit'):
