@@ -15,7 +15,7 @@ PAGES = {
 
 def main():
     """Main function of the App"""
-    st.sidebar.title("Correlation-Generator:Navigation")
+    st.sidebar.title("Correlation-Generator   Navigation:")
     selection = st.sidebar.radio("Go to", list(PAGES.keys()))
 
     page = PAGES[selection]
