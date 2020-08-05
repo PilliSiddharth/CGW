@@ -14,14 +14,6 @@ def write():
         #     """## Contributions""")
 
 
-        df_1 = pd.read_csv("life-expectancy.csv")
-        df_2 = pd.read_csv('human-right-scores.csv')
-        df_3 = pd.read_csv('gdp-data.csv')
-        df_4 = pd.read_csv('coal-consumption.csv')
-        df_5 = pd.read_csv('co2-emmisions.csv')
-
-
-
         COUNTRY = ['United States', 'Canada', 'Mexico', 'Argentina', 'Brazil', 'France',
                                               'Germany', 'Italy', 'United Kingdom', 'Spain', 'Sweden', 'Switzerland',
                                               'Norway', 'Belgium', 'Poland', 'Israel', 'India', 'China', 'Japan',
