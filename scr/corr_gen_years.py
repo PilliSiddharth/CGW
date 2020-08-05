@@ -1,7 +1,8 @@
+import seaborn as sns
 import streamlit as st
 import pandas as pd
 import numpy as np
-import seaborn as sns
+from required_items import CHOICE, CHOICE_2
 import awesome_streamlit as ast
 
 def write():
@@ -9,21 +10,8 @@ def write():
     with st.spinner("Loading Page ..."):
 
 
-        df_1 = pd.read_csv("life-expectancy.csv")
-        df_2 = pd.read_csv('human-right-scores.csv')
-        df_3 = pd.read_csv('gdp-data.csv')
-        df_4 = pd.read_csv('coal-consumption.csv')
-        df_5 = pd.read_csv('co2-emmisions.csv')
-
-
-        CHOICE = {'Life-Expectancy': df_1, 'Human-Right-Scores': df_2, 'GDP': df_3, 'Coal-Consump': df_4,
-                               'CO2-Emiss': df_5}
-
-        CHOICE_2 = {'Life-Expectancy': df_1, 'Human-Right-Scores': df_2, 'GDP': df_3, 'Coal-Consump': df_4,
-                               'CO2-Emiss': df_5}
-
         YEAR = [1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
-                2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+                2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015]
 
         st.title('Correlation-Generator(Year)')
 
@@ -31,9 +19,10 @@ def write():
         opt_2 = st.selectbox("Select Dataset-2:", options=list(CHOICE_2.keys()))
         opt_3 = st.selectbox("Select Countries:", options=YEAR)
 
-        dataset_1 = CHOICE[opt]
-        dataset_2 = CHOICE_2[opt_2]
+        dataset_1 = pd.read_csv(CHOICE[opt])
+        dataset_2 = pd.read_csv(CHOICE_2[opt_2])
         year = opt_3
+
 
         dataset_1 = dataset_1.loc[(dataset_1["Year"] == year)]
         dataset_2 = dataset_2.loc[(dataset_2["Year"] == year)]
@@ -80,10 +69,31 @@ def write():
                     pe_str = str(pearson_coef)
                     my_str = "This is a Strong Positive correlation: {}".format(pe_str)
                     st.write(my_str)
-                    
+
+
+            x = df_all["Data-1"].values.reshape(-1, 1)  # values converts it into a numpy array
+            y = df_all["Data-2"].values.reshape(-1,
+                                                  1)  # -1 means that calculate the dimension of rows, but have 1 column
+
             plot = sns.regplot(X,Y)
             plot.set(xlabel=opt_2, ylabel=opt, title='Plot')
             st.pyplot()
+
+            # linear_regressor = LinearRegression()  # create object for the class
+            # linear_regressor.fit(x, y)  # perform linear regression
+            # Y_pred = linear_regressor.predict(x)  # make predictions
+            #
+            # axs = fig.add_subplot(111)
+            # axs.set_title('Year Plot')
+            #
+            # corimage = ax.imshow(scatter, cmap=)
+            #
+            # plt.scatter(x, y)
+            # plt.plot(x, Y_pred, color='red')
+            # plt.xlabel(opt)
+            # plt.ylabel(opt_2)
+            #
+            # st.write(plt)
 
         if st.button('Submit:'):
             my_func()
