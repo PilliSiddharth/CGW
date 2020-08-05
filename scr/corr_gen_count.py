@@ -3,11 +3,12 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import awesome_streamlit as ast
+from required_items import CHOICE,CHOICE_2
 
 
 def write():
     """Used to write the page in the app.py file"""
-    with st.spinner("Loading Page ..."):
+    with st.spinner("Loading About ..."):
         # ast.shared.components.title_awesome(" - About")
         # st.markdown(
         #     """## Contributions""")
@@ -20,11 +21,6 @@ def write():
         df_5 = pd.read_csv('co2-emmisions.csv')
 
 
-        CHOICES = {'Life-Expectancy': df_1, 'Human-Right-Scores': df_2, 'GDP': df_3, 'Coal-Consump': df_4,
-                            'CO2-Emiss': df_5}
-
-        CHOICES_2 = {'Life-Expectancy': df_1, 'Human-Right-Scores': df_2, 'GDP': df_3, 'Coal-Consump': df_4,
-                            'CO2-Emiss': df_5}
 
         COUNTRY = ['United States', 'Canada', 'Mexico', 'Argentina', 'Brazil', 'France',
                                               'Germany', 'Italy', 'United Kingdom', 'Spain', 'Sweden', 'Switzerland',
@@ -34,12 +30,12 @@ def write():
 
         st.title('Correlation-Generator(Country)')
 
-        option = st.selectbox("Select Dataset-1", options=list(CHOICES.keys()))
-        option_2 = st.selectbox("Select Dataset-2", options=list(CHOICES_2.keys()))
+        option = st.selectbox("Select Dataset-1", options=list(CHOICE.keys()))
+        option_2 = st.selectbox("Select Dataset-2", options=list(CHOICE_2.keys()))
         option_3 = st.selectbox("Select Countries", options=COUNTRY)
 
-        dataset_1 = CHOICES[option]
-        dataset_2 = CHOICES_2[option_2]
+        dataset_1 = pd.read_csv(CHOICE[option])
+        dataset_2 = pd.read_csv(CHOICE_2[option_2])
         country = option_3
 
         dataset_1 = dataset_1.loc[(dataset_1["Entity"] == country)]
@@ -87,11 +83,10 @@ def write():
                  pe_str = str(pearson_coef)
                  my_str = "This is a Strong Positive correlation: {}".format(pe_str)
                  st.write(my_str)
-        
-         plot = sns.regplot(X,Y)
+         plot = sns.regplot(X, Y)
          plot.set(xlabel=option_2, ylabel=option, title='Plot')
          st.pyplot()
-        
+
         if st.button('Submit'):
          my_func()
          # print("....")
