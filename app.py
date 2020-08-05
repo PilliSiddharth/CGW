@@ -4,12 +4,14 @@ import streamlit as st
 import awesome_streamlit as ast
 import scr.corr_gen_count
 import scr.corr_gen_years
+import scr.report_bugs
 
 ast.core.services.other.set_logging_format()
 
 PAGES = {
     "Correlation-Generator(Country)": scr.corr_gen_count ,
     "Correlation-Generator(Year)": scr.corr_gen_years,
+    "Report Bugs":scr.report_bugs
 }
 
 
